@@ -53,7 +53,8 @@ func OAuthToken(address, clientID, clientSecret string, opts ...grpc.DialOption)
 	creds := credentials.NewTLS(&tls.Config{
 		ServerName: address,
 	})
-	conn, err := grpc.Dial(address+":443", grpc.WithTransportCredentials(creds), rpcCreds)
+	opts = append(opts, grpc.WithTransportCredentials(creds), rpcCreds)
+	conn, err := grpc.Dial(address+":443", opts...)
 	if err != nil {
 		return nil, fmt.Errorf("connect: cannot connect to remote address %s: %v", address, err)
 	}
@@ -67,7 +68,8 @@ func Insecure(address string, opts ...grpc.DialOption) (*grpc.ClientConn, error)
 		return nil, fmt.Errorf("connect: remote address required")
 	}
 
-	conn, err := grpc.Dial(address)
+	opts = append(opts, grpc.WithInsecure())
+	conn, err := grpc.Dial(address, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("connect: cannot connect to remote address %s: %v", address, err)
 	}
