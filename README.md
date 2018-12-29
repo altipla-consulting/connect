@@ -1,6 +1,8 @@
 
 # connect
 
+> **DEPRECATED:** Use https://github.com/altipla-consulting/libs instead.
+
 [![GoDoc](https://godoc.org/github.com/altipla-consulting/connect?status.svg)](https://godoc.org/github.com/altipla-consulting/connect)
 [![Build Status](https://travis-ci.org/altipla-consulting/connect.svg?branch=master)](https://travis-ci.org/altipla-consulting/connect)
 
